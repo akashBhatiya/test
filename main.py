@@ -1,5 +1,16 @@
+from google import genai
+
+client = genai.Client(
+    vertexai= True,
+    project="aws-prod-484205"
+)
+
 def main():
-    print("Hello from test!")
+    response = client.models.generate_content(
+        model="gemini-2.0-flash-exp",
+        contents="Explain how AI works in a few words"
+    )
+    print(response.text)
 
 
 if __name__ == "__main__":
